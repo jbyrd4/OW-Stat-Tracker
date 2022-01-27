@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {OWStatTracker} from './Components/OWStatTracker'
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <OWStatTracker />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
