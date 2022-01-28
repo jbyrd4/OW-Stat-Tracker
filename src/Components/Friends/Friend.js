@@ -16,8 +16,13 @@ export const Friend = ({friend}) => {
     const winRate = () => {
         const playedGames = friendGames.filter(game => game.friendId === friend.id)
         const wonGames = playedGames.filter(game => game.game.result === true)
-        const winPercent = ((parseInt(wonGames.length) / parseInt(playedGames.length))*100).toFixed(2)
-        return winPercent
+        if(playedGames.length > 0) {
+            const winPercent = ((parseInt(wonGames.length) / parseInt(playedGames.length))*100).toFixed(2)
+            return winPercent + "%"
+        } else {
+            const winPercent = "No Game Data"
+            return winPercent
+        }
     }
 
 
@@ -28,7 +33,9 @@ export const Friend = ({friend}) => {
         <div>DPS: {friend.dpsRank}</div>
         <div>Support: {friend.supRank}</div>
         <div>Notes: {friend.notes}</div>
-        <div>Winrate: {winRate()}%</div>
+        <div>Winrate: {winRate()}</div>
+        <button>Edit</button>
+        <button>Delete</button>
       </li>
   )
 }
