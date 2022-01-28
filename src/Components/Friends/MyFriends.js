@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Friend } from "./Friend"
+import { FriendForm } from "./FriendForm"
 
 
 
@@ -19,6 +20,7 @@ export const MyFriends = () => {
 
     return (
         <>
+        <div>{FriendForm()}</div>
         <h2>My Friends</h2>
             <ul>
             {

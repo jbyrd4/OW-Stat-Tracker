@@ -17,7 +17,7 @@ export const ApplicationViews = () => {
             <Route exact path="/">
                 <NewGameEntry />
             </Route>
-            <Route exact path="/MyFriends/FriendForm/:friendId(/d+)">
+            <Route exact path="/MyFriends/FriendForm">
                 <FriendForm />
             </Route>
         </>
