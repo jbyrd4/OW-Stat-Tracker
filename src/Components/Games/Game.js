@@ -20,7 +20,17 @@ export const Game = ({ game }) => {
     })
     .then(() => history.go("/mygames"))
     }
+
+  const deleteFriendGames = (id) => {
+    fetch(`http://localhost:8088/friendGames/${id}`, {
+      method: "DELETE"
+    })
+  }
   
+  const rmFriendGames = (id) => {
+    const friendGamesArr = friendGames.filter(friendGame => friendGame.gameId === game.id)
+    return friendGamesArr.map(friendGame => deleteFriendGames(friendGame.id))
+  }
 
   const friendsPlayed = friendGames.filter((friend) => friend.gameId === game.id);
 
@@ -30,7 +40,7 @@ export const Game = ({ game }) => {
         
         {friendsPlayed.map(friend => <div>{friend.friend.name}</div>)}
         <div>Result: {game.result ? "Win" : "Loss"}</div>
-        <button onClick={() => {deleteGame(game.id)}}>Delete</button>
+        <button onClick={() => {deleteGame(game.id); rmFriendGames(game.id)}}>Delete</button>
     </li>
   );
 };
