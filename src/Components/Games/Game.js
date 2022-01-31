@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 
-export const Game = ({ game }) => {
+export const Game = ({ game, getGames }) => {
   const [friendGames, setFriendGames] = useState([]);
-
-    const history = useHistory()
 
   useEffect(() => {
     fetch("http://localhost:8088/friendGames?_expand=game&_expand=friend")
@@ -12,19 +9,18 @@ export const Game = ({ game }) => {
       .then((data) => {
         setFriendGames(data);
       });
-  }, []);
+  }, [])
 
   const deleteGame = (id) => {
     fetch(`http://localhost:8088/games/${id}`, {
         method: "DELETE"
-    })
-    .then(() => history.go("/mygames"))
+    }).then(() => getGames())
     }
 
   const deleteFriendGames = (id) => {
     fetch(`http://localhost:8088/friendGames/${id}`, {
       method: "DELETE"
-    })
+    }).then(() => getGames())
   }
   
   const rmFriendGames = (id) => {
@@ -40,7 +36,7 @@ export const Game = ({ game }) => {
         
         {friendsPlayed.map(friend => <div>{friend.friend.name}</div>)}
         <div>Result: {game.result ? "Win" : "Loss"}</div>
-        <button onClick={() => {deleteGame(game.id); rmFriendGames(game.id)}}>Delete</button>
+        <button key={game.id} onClick={() => {deleteGame(game.id); rmFriendGames(game.id)}}>Delete</button>
     </li>
   );
 };

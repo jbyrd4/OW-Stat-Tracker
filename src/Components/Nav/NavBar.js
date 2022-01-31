@@ -5,7 +5,7 @@ export const NavBar = () => {
   return (
     <ul className="navbar">
       <li className="navbar__item active">
-        <Link className="navbar__link" to="/newgameentry">New Game Entry</Link>
+        <Link className="navbar__link" to="/">New Game Entry</Link>
       </li>
       <li className="navbar__item active">
         <Link className="navbar__link" to="/mygames">My Games</Link>

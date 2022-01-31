@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 
-export const FriendForm = () => {
+export const FriendForm = ({getFriends}) => {
   const [friend, addFriend] = useState({
     name: "",
     tankRank: "Bronze",
@@ -11,7 +10,6 @@ export const FriendForm = () => {
     userId: parseInt(localStorage.getItem("ow_account")),
   });
 
-  const history = useHistory();
 
   const createFriend = (event) => {
     event.preventDefault();
@@ -34,7 +32,7 @@ export const FriendForm = () => {
     };
     
     return fetch("http://localhost:8088/friends", fetchOption)
-    .then(() => history.go('/myfriends'))
+    .then(() => getFriends())
   };
 
   const ranks = [
