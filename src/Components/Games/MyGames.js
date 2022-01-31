@@ -4,30 +4,17 @@ import { Game } from "./Game"
 
 
 export const MyGames = () => {
-    const [friendGames, setFriendGames] = useState([])
     const [games, setGames] = useState([])
 
-    useEffect(
-        () => {
-            fetch("http://localhost:8088/friendGames?_expand=game&_expand=friend")
-            .then(res => res.json())
-            .then((data) => {
-                setFriendGames(data)
-            })
-        },
-        []
-    )
-
-    useEffect(
-        () => {
-            fetch("http://localhost:8088/games")
+const getGames = () => {
+    fetch("http://localhost:8088/games")
             .then(res => res.json())
             .then((data) => {
                 setGames(data)
             })
-        },
-        []
-    )
+}
+
+    useEffect(() => {getGames()}, [])
 
     return (
         <>
@@ -37,7 +24,7 @@ export const MyGames = () => {
                 games.map(game => 
                     game.userId === parseInt(localStorage.getItem('ow_account')) 
                     ?
-                        <Game key={`game--${game.id}`} game={game}/>
+                        <Game key={`game--${game.id}`} game={game} getGames={getGames}/>
                     :
                     ""
                 )
