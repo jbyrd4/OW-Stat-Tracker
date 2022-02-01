@@ -75,7 +75,7 @@ export const FriendForm = ({getFriends}) => {
             }}
           >
             {ranks.map((rank) => (
-              <option value={rank} label={rank}></option>
+              <option key={`key--${rank}`} value={rank} label={rank}></option>
             ))}
           </select>
         </div>
@@ -91,7 +91,7 @@ export const FriendForm = ({getFriends}) => {
             }}
           >
             {ranks.map((rank) => (
-              <option value={rank} label={rank}></option>
+              <option key={`key--${rank}`} value={rank} label={rank}></option>
             ))}
           </select>
         </div>
@@ -107,7 +107,7 @@ export const FriendForm = ({getFriends}) => {
             }}
           >
             {ranks.map((rank) => (
-              <option value={rank} label={rank}></option>
+              <option key={`key--${rank}`} value={rank} label={rank}></option>
             ))}
           </select>
         </div>
