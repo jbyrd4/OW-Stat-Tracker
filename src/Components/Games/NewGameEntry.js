@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export const NewGameEntry = () => {
   const [maps, setMaps] = useState([]);
   const [friends, setFriends] = useState([]);
   const [friendArr, addFriend] = useState([]);
-  const [friendNames, addFriendNames] = useState([])
+  const [friendNames, addFriendNames] = useState([]);
   const [game, addGame] = useState({
     result: true,
     userId: parseInt(localStorage.getItem("ow_account")),
-    mapId: 1,
+    mapId: 0,
     date: "",
   });
+
+  const history = useHistory();
 
   useEffect(() => {
     fetch("http://localhost:8088/friends")
@@ -25,11 +28,13 @@ export const NewGameEntry = () => {
   }, []);
 
   useEffect(() => {
-    addFriendNames(friendArr.map(friendId => {
-      const foundFriend = friends.find(friend => friend.id === friendId)
-      return foundFriend.name
-    }))
-  },[friendArr])
+    addFriendNames(
+      friendArr.map((friendId) => {
+        const foundFriend = friends.find((friend) => friend.id === friendId);
+        return foundFriend.name;
+      })
+    );
+  }, [friendArr]);
 
   const addFriendArr = (id, arr) => {
     if (arr.includes(parseInt(id))) {
@@ -37,6 +42,40 @@ export const NewGameEntry = () => {
       arr.push(parseInt(id));
       addFriend(arr);
     }
+  };
+
+  const submitGame = () => {
+    const newGame = {
+      result: game.result,
+      userId: parseInt(localStorage.getItem("ow_account")),
+      mapId: game.mapId,
+      date: new Date(),
+    };
+
+    fetch("http://localhost:8088/games", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newGame),
+    })
+      .then((res) => res.json())
+      .then((newGame) => {
+        const friendGamePromises = friendArr.map((friend) => {
+          return fetch("http://localhost:8088/friendGames", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              friendId: parseInt(friend),
+              gameId: newGame.id,
+            }),
+          });
+        });
+        return Promise.all(friendGamePromises);
+      })
+      .then(history.push("/mygames"));
   };
 
   return (
@@ -48,22 +87,24 @@ export const NewGameEntry = () => {
         <div className="form-group">
           <label htmlFor="friends">Add a Friend: </label>
           <select
+            value={0}
             onChange={(changeEvent) => {
               const copy = [...friendArr];
-              addFriendArr(changeEvent.target.value, copy);
+              changeEvent.target.value > 0 &&
+                addFriendArr(changeEvent.target.value, copy);
             }}
           >
-            {friends.map((friend) =>
-              friend.userId === parseInt(localStorage.getItem("ow_account")) ? (
-                <option
-                  value={friend.id}
-                  name={friend.name}
-                  key={friend.id}
-                  label={friend.name}
-                ></option>
-              ) : (
-                ""
-              )
+            <option value={0}>Select Friends</option>
+            {friends.map(
+              (friend) =>
+                friend.userId ===
+                  parseInt(localStorage.getItem("ow_account")) && (
+                  <option
+                    value={friend.id}
+                    key={friend.id}
+                    label={friend.name}
+                  ></option>
+                )
             )}
           </select>
         </div>
@@ -72,12 +113,14 @@ export const NewGameEntry = () => {
         <div className="form-group">
           <label htmlFor="maps">Select a Map: </label>
           <select
+            value={game.mapId}
             onChange={(changeEvent) => {
               const copy = { ...game };
               copy.mapId = changeEvent.target.value;
-              addGame(copy);
+              changeEvent.target.value > 0 && addGame(copy);
             }}
           >
+            <option value={0}>Choose A Map</option>
             {maps.map((map) => (
               <option value={map.id} key={map.id} label={map.name}></option>
             ))}
@@ -88,11 +131,12 @@ export const NewGameEntry = () => {
         <div className="form-group">
           <label htmlFor="result">Choose Game Result: </label>
           <select
+            value={game.result ? 1 : 0}
             onChange={(changeEvent) => {
               const copy = { ...game };
               copy.result =
                 parseInt(changeEvent.target.value) === 0 ? false : true;
-              addGame(copy);
+              changeEvent.target.value < 2 && addGame(copy);
             }}
           >
             <option value={1}>Win</option>
@@ -100,8 +144,20 @@ export const NewGameEntry = () => {
           </select>
         </div>
       </fieldset>
-      <button>Submit</button>
-      <button>Clear Friends</button>
+      <button onClick={submitGame}>Submit</button>
+      <button
+        onClick={(event) => {
+          event.preventDefault();
+          addGame({
+            result: true,
+            userId: parseInt(localStorage.getItem("ow_account")),
+            mapId: 0,
+            date: "",
+          });
+        }}
+      >
+        Clear Form
+      </button>
     </form>
   );
 };

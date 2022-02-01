@@ -34,7 +34,7 @@ export const Game = ({ game, getGames }) => {
       <li>
         <div>Friends Played:</div>
         
-        {friendsPlayed.map(friend => <div>{friend.friend.name}</div>)}
+        {friendsPlayed.map(friend => <div key={friend.friend.id}>{friend.friend.name}</div>)}
         <div>Result: {game.result ? "Win" : "Loss"}</div>
         <button key={game.id} onClick={() => {deleteGame(game.id); rmFriendGames(game.id)}}>Delete</button>
     </li>
