@@ -11,7 +11,7 @@ export const NavBar = () => {
         <Link className="navbar__link" to="/mygames">My Games</Link>
       </li>
       <li className="navbar__item active">
-        <Link className="navbar__link" to="/myfriends">My Friend</Link>
+        <Link className="navbar__link" to="/myfriends">My Friends</Link>
       </li>
       <li className="navbar__item active">
         <Link
