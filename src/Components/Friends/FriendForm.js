@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const FriendForm = ({getFriends}) => {
+export const FriendForm = ({ getFriends }) => {
   const [friend, addFriend] = useState({
     name: "",
     tankRank: "Bronze",
@@ -9,7 +9,6 @@ export const FriendForm = ({getFriends}) => {
     notes: "",
     userId: parseInt(localStorage.getItem("ow_account")),
   });
-
 
   const createFriend = (event) => {
     event.preventDefault();
@@ -20,19 +19,27 @@ export const FriendForm = ({getFriends}) => {
       dpsRank: friend.dpsRank,
       supRank: friend.supRank,
       notes: friend.notes,
-      userId: friend.userId
+      userId: friend.userId,
     };
 
     const fetchOption = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newFriend)
+      body: JSON.stringify(newFriend),
     };
-    
-    return fetch("http://localhost:8088/friends", fetchOption)
-    .then(() => getFriends())
+
+    return fetch("http://localhost:8088/friends", fetchOption).then(() =>
+      addFriend({
+        name: "",
+        tankRank: "Bronze",
+        dpsRank: "Bronze",
+        supRank: "Bronze",
+        notes: "",
+        userId: parseInt(localStorage.getItem("ow_account")),
+      })
+    ).then(() => getFriends())
   };
 
   const ranks = [
@@ -52,6 +59,7 @@ export const FriendForm = ({getFriends}) => {
         <div>
           <label htmlFor="name">Account Name: </label>
           <input
+            value={friend.name}
             required
             autoFocus
             type="text"
@@ -67,7 +75,7 @@ export const FriendForm = ({getFriends}) => {
       <fieldset>
         <div>
           <label htmlFor="tankRank">Tank Rank: </label>
-          <select
+          <select value={friend.tankRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
               copy.tankRank = changeEvent.target.value;
@@ -83,7 +91,7 @@ export const FriendForm = ({getFriends}) => {
       <fieldset>
         <div>
           <label htmlFor="dpsRank">DPS Rank: </label>
-          <select
+          <select value={friend.dpsRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
               copy.dpsRank = changeEvent.target.value;
@@ -99,7 +107,7 @@ export const FriendForm = ({getFriends}) => {
       <fieldset>
         <div>
           <label htmlFor="supRank">Support Rank: </label>
-          <select
+          <select value={friend.supRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
               copy.supRank = changeEvent.target.value;
@@ -116,6 +124,7 @@ export const FriendForm = ({getFriends}) => {
         <div>
           <label htmlFor="notes">Notes: </label>
           <textarea
+            value={friend.notes}
             onChange={(changeEvent) => {
               const copy = { ...friend };
               copy.notes = changeEvent.target.value;
@@ -124,7 +133,7 @@ export const FriendForm = ({getFriends}) => {
           ></textarea>
         </div>
       </fieldset>
-      <button onClick={createFriend}>Submit</button>
+      <button onClick={(event) => event.preventDefault(), createFriend}>Submit</button>
     </form>
   );
 };

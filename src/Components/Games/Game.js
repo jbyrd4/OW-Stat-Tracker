@@ -17,26 +17,15 @@ export const Game = ({ game, getGames }) => {
     }).then(() => getGames())
     }
 
-  const deleteFriendGames = (id) => {
-    fetch(`http://localhost:8088/friendGames/${id}`, {
-      method: "DELETE"
-    }).then(() => getGames())
-  }
-  
-  const rmFriendGames = (id) => {
-    const friendGamesArr = friendGames.filter(friendGame => friendGame.gameId === game.id)
-    return friendGamesArr.map(friendGame => deleteFriendGames(friendGame.id))
-  }
-
   const friendsPlayed = friendGames.filter((friend) => friend.gameId === game.id);
 
   return (
       <li>
-        <div>Friends Played:</div>
+        <div><b>Friends Played:</b></div>
         
         {friendsPlayed.map(friend => <div key={friend.friend.id}>{friend.friend.name}</div>)}
-        <div>Result: {game.result ? "Win" : "Loss"}</div>
-        <button key={game.id} onClick={() => {deleteGame(game.id); rmFriendGames(game.id)}}>Delete</button>
+        <div><b>Result: </b>{game.result ? "Win" : "Loss"}</div>
+        <button key={game.id} onClick={() => {deleteGame(game.id)}}>Delete</button>
     </li>
   );
 };
