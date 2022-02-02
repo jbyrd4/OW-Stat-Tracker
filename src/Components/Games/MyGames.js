@@ -7,7 +7,7 @@ export const MyGames = () => {
     const [games, setGames] = useState([])
 
 const getGames = () => {
-    fetch("http://localhost:8088/games")
+    fetch("http://localhost:8088/games?_expand=map")
             .then(res => res.json())
             .then((data) => {
                 setGames(data)
@@ -21,13 +21,13 @@ const getGames = () => {
         <h2>My Games</h2>
             <ul>
             {
-                games.map(game => 
+                (games.map(game => 
                     game.userId === parseInt(localStorage.getItem('ow_account')) 
                     ?
                         <Game key={`game--${game.id}`} game={game} getGames={getGames}/>
                     :
                     ""
-                )
+                )).sort((a,b) => a.date - b.date).reverse()
             }
             </ul>
         </>

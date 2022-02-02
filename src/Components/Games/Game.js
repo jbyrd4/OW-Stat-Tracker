@@ -24,6 +24,7 @@ export const Game = ({ game, getGames }) => {
         <div><b>Friends Played:</b></div>
         
         {friendsPlayed.map(friend => <div key={friend.friend.id}>{friend.friend.name}</div>)}
+        <div><b>Map: </b>{game.map.name}</div>
         <div><b>Result: </b>{game.result ? "Win" : "Loss"}</div>
         <button key={game.id} onClick={() => {deleteGame(game.id)}}>Delete</button>
     </li>
