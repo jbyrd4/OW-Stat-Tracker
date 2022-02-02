@@ -4,6 +4,7 @@ import { MyFriends } from "./Friends/MyFriends"
 import { MyGames } from "./Games/MyGames"
 import {NewGameEntry} from "./Games/NewGameEntry"
 import {FriendForm} from "./Friends/FriendForm"
+import { EditFriend } from "./Friends/EditFriend"
 
 export const ApplicationViews = () => {
     return (
@@ -19,6 +20,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/MyFriends/FriendForm">
                 <FriendForm />
+            </Route>
+            <Route exact path="/MyFriends/EditFriend/:friendId(\d+)">
+                <EditFriend />
             </Route>
         </>
     )
