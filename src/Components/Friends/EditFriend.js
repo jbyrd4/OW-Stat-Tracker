@@ -13,7 +13,7 @@ export const EditFriend = () => {
     userId: parseInt(localStorage.getItem("ow_account")),
   });
 
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     return fetch(`http://localhost:8088/friends/${friendId}`)
@@ -43,8 +43,10 @@ export const EditFriend = () => {
       body: JSON.stringify(edittedFriend),
     };
 
-    return fetch(`http://localhost:8088/friends/${friend.id}`, fetchOption)
-           .then(() => getFriends());
+    return fetch(
+      `http://localhost:8088/friends/${friend.id}`,
+      fetchOption
+    ).then(() => history.push("/MyFriends"));
   };
 
   const ranks = [
@@ -141,11 +143,10 @@ export const EditFriend = () => {
           ></textarea>
         </div>
       </fieldset>
-      <button onClick={((event) => {
-          event.preventDefault()
-          editFriend(event)
-          history.push("/MyFriends")
-        })}
+      <button
+        onClick={(event) => {
+          editFriend(event);
+        }}
       >
         Save
       </button>

@@ -154,7 +154,7 @@ export const NewGameEntry = () => {
             mapId: 0,
             date: "",
           });
-          addFriend([])
+          addFriend([]);
         }}
       >
         Clear Form

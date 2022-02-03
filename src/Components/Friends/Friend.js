@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useHistory,Link } from "react-router-dom";
-import { EditFriend } from "./EditFriend";
+import { Link } from "react-router-dom";
 
-export const Friend = ({ friend, deleteFriend}) => {
+export const Friend = ({ friend, deleteFriend }) => {
   const [friendGames, setFriendGames] = useState([]);
-
-  const history = useHistory()
 
   useEffect(() => {
     fetch("http://localhost:8088/friendGames?_expand=game&_expand=friend")
       .then((res) => res.json())
-      .then((data) => {
-        setFriendGames(data);
-      });
+      .then(setFriendGames);
   }, []);
 
   const winRate = () => {
@@ -42,10 +37,16 @@ export const Friend = ({ friend, deleteFriend}) => {
       <div>Winrate: {winRate()}</div>
 
       <Link to={`/myfriends/EditFriend/${friend.id}`}>
-      <button id={friend.id} key={friend.id}>Edit</button>
+        <button id={friend.id} key={friend.id}>
+          Edit
+        </button>
       </Link>
 
-      <button onClick={() => {deleteFriend(friend.id)}}>
+      <button
+        onClick={() => {
+          deleteFriend(friend.id);
+        }}
+      >
         Delete
       </button>
     </li>
