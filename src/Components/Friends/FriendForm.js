@@ -30,16 +30,18 @@ export const FriendForm = ({ getFriends }) => {
       body: JSON.stringify(newFriend),
     };
 
-    return fetch("http://localhost:8088/friends", fetchOption).then(() =>
-      addFriend({
-        name: "",
-        tankRank: "Bronze",
-        dpsRank: "Bronze",
-        supRank: "Bronze",
-        notes: "",
-        userId: parseInt(localStorage.getItem("ow_account")),
-      })
-    ).then(() => getFriends())
+    return fetch("http://localhost:8088/friends", fetchOption)
+      .then(() =>
+        addFriend({
+          name: "",
+          tankRank: "Bronze",
+          dpsRank: "Bronze",
+          supRank: "Bronze",
+          notes: "",
+          userId: parseInt(localStorage.getItem("ow_account")),
+        })
+      )
+      .then(() => getFriends());
   };
 
   const ranks = [
@@ -75,7 +77,8 @@ export const FriendForm = ({ getFriends }) => {
       <fieldset>
         <div>
           <label htmlFor="tankRank">Tank Rank: </label>
-          <select value={friend.tankRank}
+          <select
+            value={friend.tankRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
               copy.tankRank = changeEvent.target.value;
@@ -91,7 +94,8 @@ export const FriendForm = ({ getFriends }) => {
       <fieldset>
         <div>
           <label htmlFor="dpsRank">DPS Rank: </label>
-          <select value={friend.dpsRank}
+          <select
+            value={friend.dpsRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
               copy.dpsRank = changeEvent.target.value;
@@ -107,7 +111,8 @@ export const FriendForm = ({ getFriends }) => {
       <fieldset>
         <div>
           <label htmlFor="supRank">Support Rank: </label>
-          <select value={friend.supRank}
+          <select
+            value={friend.supRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
               copy.supRank = changeEvent.target.value;
@@ -133,7 +138,9 @@ export const FriendForm = ({ getFriends }) => {
           ></textarea>
         </div>
       </fieldset>
-      <button onClick={(event) => event.preventDefault(), createFriend}>Submit</button>
+      <button onClick={((event) => event.preventDefault(), createFriend)}>
+        Submit
+      </button>
     </form>
   );
 };
