@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "./Games.css"
+import "../Friends/Friends.css"
 
 export const Game = ({ game, getGames }) => {
   const [friendGames, setFriendGames] = useState([]);
@@ -17,24 +19,29 @@ export const Game = ({ game, getGames }) => {
     }).then(() => getGames());
   };
 
-  return (
-    <li>
-      <div>
-        <b>Friends Played:</b>
-      </div>
+  const friendsInGames = (friendGamesArr) => {
+    const friendNames = friendGamesArr.map((friend) => friend.friend.name)
+    const friendArr = friendNames.join(" ")
+    return <div className="cardInput__friend" key="friendString">{friendArr}</div>
+  }
 
-      {friendGames.map((friend) => (
-        <div key={friend.friend.id}>{friend.friend.name}</div>
-      ))}
+  return (
+    <li className="gameCard__single">
+      <section className="gameInfo">
+      <div className="cardCategory__game">Friends Played: </div>
+      <section className="gameFriendList">
+      {friendsInGames(friendGames)}
+      </section>
+      </section>
       <div>
-        <b>Map: </b>
-        {game.map?.name}
+        <p className="cardCategory">Map: </p>
+        <p className="cardInput">{game.map?.name}</p>
       </div>
       <div>
-        <b>Result: </b>
-        {game.result ? "Win" : "Loss"}
+      <p className="cardCategory">Result: </p>
+        <p className="cardInput">{game.result ? "Win" : "Loss"}</p>
       </div>
-      <button
+      <button className="button"
         key={game.id}
         onClick={() => {
           deleteGame(game.id);

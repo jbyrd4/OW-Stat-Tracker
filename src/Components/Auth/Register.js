@@ -56,11 +56,11 @@ export const Register = (props) => {
       </dialog>
 
       <form className="form--login" onSubmit={handleRegister}>
-        <h1 className="h3 mb-3 font-weight-normal">
-          Please Register for the Overwatch Stat Tracker
+        <h1 className="h3 mb-3 font-weight-normal title">
+          Please Register for Hard Counter
         </h1>
         <fieldset>
-          <label htmlFor="name"> Name </label>
+          <label className="loginTitle" htmlFor="name"> Name </label>
           <input
             onChange={updateuser}
             type="text"
@@ -72,7 +72,7 @@ export const Register = (props) => {
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="email"> Email address </label>
+          <label className="loginTitle" htmlFor="email"> Email address </label>
           <input
             onChange={updateuser}
             type="email"
@@ -83,7 +83,7 @@ export const Register = (props) => {
           />
         </fieldset>
         <fieldset>
-          <button type="submit"> Register </button>
+          <button className="button" type="submit"> Register </button>
         </fieldset>
       </form>
     </main>
