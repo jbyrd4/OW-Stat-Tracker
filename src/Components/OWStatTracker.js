@@ -12,7 +12,8 @@ export const OWStatTracker = () => (
         if (localStorage.getItem("ow_account")) {
           return (
             <>
-              <h1>Overwatch Stat Tracker</h1>
+              <h1 className="title">Hard Counter:</h1>
+              <p className="subtitle">Or how you learned that you and all your friends suck at Overwatch</p>
               <NavBar />
               <ApplicationViews />
             </>

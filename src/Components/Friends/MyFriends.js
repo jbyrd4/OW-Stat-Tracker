@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Friend } from "./Friend";
 import { FriendForm } from "./FriendForm";
+import "./Friends.css"
 
 export const MyFriends = () => {
   const [friends, setFriends] = useState([]);
@@ -28,8 +29,8 @@ export const MyFriends = () => {
   return (
     <>
       <div>{<FriendForm getFriends={getFriends} />}</div>
-      <h2>My Friends</h2>
-      <ul>
+      <h2 className="sectionTitle">My Friends</h2>
+      <ul className="card">
         {friends.map((friend) =>
           friend.userId === parseInt(localStorage.getItem("ow_account")) ? (
             <Friend

@@ -1,0 +1,85 @@
+.friendForm {
+  background: rgba(67, 72, 76, 0.8);
+  padding: 1em;
+  margin: 1em;
+}
+
+.friendForm__form {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  text-align: center;
+  background: rgba(249, 158, 26, 0.9);
+  clip-path: polygon(0 0, 98.5% 0, 100% 100%, 1.5% 100%);
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.button {
+  width: 10em;
+  height: 2em;
+  background: rgba(249, 158, 26, 0.9);
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0.3em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.label {
+  padding-bottom: 0.5em;
+}
+
+.field__single {
+  background-color: darkgray;
+}
+
+.card {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card__single {
+  padding: 1em;
+  margin: .5em;
+  background: rgba(67, 72, 76, 0.8);
+  flex-basis: 25%;
+}
+
+.cardCategory {
+    display: inline;
+    color: #f99e1a;
+    font-size: large;
+}
+
+.cardInput {
+    display: inline;
+    color: darkgray;
+    font-style: italic;
+}
+
+.winRate {
+    text-align: center;
+    padding: 1em;
+    font-size: larger;
+}
+
+.accountName {
+    text-align: center;
+    padding: .5em;
+    font-size: x-large;
+    color: #f99e1a;
+}
+
+.friendButtons {
+    display: flex;
+}

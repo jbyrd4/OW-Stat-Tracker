@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./Friends.css"
 
 export const Friend = ({ friend, deleteFriend }) => {
   const [friendGames, setFriendGames] = useState([]);
@@ -28,27 +29,28 @@ export const Friend = ({ friend, deleteFriend }) => {
   };
 
   return (
-    <li>
-      <div>Account: {friend.name}</div>
-      <div>Tank: {friend.tankRank}</div>
-      <div>DPS: {friend.dpsRank}</div>
-      <div>Support: {friend.supRank}</div>
-      <div>Notes: {friend.notes}</div>
-      <div>Winrate: {winRate()}</div>
-
+    <li className="card__single">
+      <div className="accountName">{friend.name}</div>
+      <div><p className="cardCategory">Tank: </p><p className="cardInput">{friend.tankRank}</p></div>
+      <div><p className="cardCategory">DPS: </p><p className="cardInput">{friend.dpsRank}</p></div>
+      <div><p className="cardCategory">Support: </p><p className="cardInput">{friend.supRank}</p></div>
+      <div><p className="cardCategory notes">Notes: </p><p className="cardInput">{friend.notes}</p></div>
+      <div className="winRate"><p className="cardCategory">Winrate: </p><p className="cardInput">{winRate()}</p></div>
+      <div className="friendButtons">
       <Link to={`/myfriends/EditFriend/${friend.id}`}>
-        <button id={friend.id} key={friend.id}>
+        <button className="button" id={friend.id} key={friend.id}>
           Edit
         </button>
       </Link>
 
-      <button
+      <button className="button"
         onClick={() => {
           deleteFriend(friend.id);
         }}
       >
         Delete
       </button>
+      </div>
     </li>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Friends.css"
 
 export const FriendForm = ({ getFriends }) => {
   const [friend, addFriend] = useState({
@@ -55,12 +56,13 @@ export const FriendForm = ({ getFriends }) => {
   ];
 
   return (
-    <form>
-      <h2>Add A New Friend</h2>
+      <div className="friendForm">
+      <h2 className="sectionTitle">Add A New Friend</h2>
+    <form className="friendForm__form">
       <fieldset>
-        <div>
-          <label htmlFor="name">Account Name: </label>
-          <input
+        <div className="field">
+          <label htmlFor="name" className="label">Account Name: </label>
+          <input className="field__single"
             value={friend.name}
             required
             autoFocus
@@ -75,9 +77,9 @@ export const FriendForm = ({ getFriends }) => {
         </div>
       </fieldset>
       <fieldset>
-        <div>
-          <label htmlFor="tankRank">Tank Rank: </label>
-          <select
+        <div className="field">
+          <label htmlFor="tankRank" className="label">Tank Rank: </label>
+          <select className="field__single"
             value={friend.tankRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
@@ -92,9 +94,9 @@ export const FriendForm = ({ getFriends }) => {
         </div>
       </fieldset>
       <fieldset>
-        <div>
-          <label htmlFor="dpsRank">DPS Rank: </label>
-          <select
+        <div className="field">
+          <label htmlFor="dpsRank" className="label">DPS Rank: </label>
+          <select className="field__single"
             value={friend.dpsRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
@@ -109,9 +111,9 @@ export const FriendForm = ({ getFriends }) => {
         </div>
       </fieldset>
       <fieldset>
-        <div>
-          <label htmlFor="supRank">Support Rank: </label>
-          <select
+        <div className="field">
+          <label htmlFor="supRank" className="label">Support Rank: </label>
+          <select className="field__single"
             value={friend.supRank}
             onChange={(changeEvent) => {
               const copy = { ...friend };
@@ -126,9 +128,9 @@ export const FriendForm = ({ getFriends }) => {
         </div>
       </fieldset>
       <fieldset>
-        <div>
-          <label htmlFor="notes">Notes: </label>
-          <textarea
+        <div className="field">
+          <label htmlFor="notes" className="label">Notes: </label>
+          <textarea className="field__single"
             value={friend.notes}
             onChange={(changeEvent) => {
               const copy = { ...friend };
@@ -138,9 +140,10 @@ export const FriendForm = ({ getFriends }) => {
           ></textarea>
         </div>
       </fieldset>
-      <button onClick={((event) => event.preventDefault(), createFriend)}>
+    </form>
+      <button className="button" onClick={((event) => event.preventDefault(), createFriend)}>
         Submit
       </button>
-    </form>
+    </div>
   );
 };
