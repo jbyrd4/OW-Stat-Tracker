@@ -1,0 +1,47 @@
+.gameCard {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.gameInfo {
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    flex-wrap: wrap;
+}
+
+.gameCard {
+  list-style-type: none;
+}
+
+.gameCard__single {
+  display: flex;
+  padding: 1em;
+  margin: 0.5em;
+  background: rgba(67, 72, 76, 0.8);
+  justify-content:space-between;
+  padding-left: 5em;
+  padding-right: 5em;
+  clip-path: polygon(0 0, 96% 0, 100% 100%, 4% 100%);
+  border: 1px solid #f99e1a;
+  height: 100px;
+  flex-wrap: wrap;
+}
+
+.cardInput__friend {
+    color: darkgray;
+    font-style: italic;
+    width: 250px;
+}
+
+.cardCategory__game {
+        color: #f99e1a;
+}
+
+.gameFriendList {
+    display: flex;
+    flex-direction: wrap;
+}

@@ -83,3 +83,18 @@
 .friendButtons {
     display: flex;
 }
+
+.friendList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 25%;
+    color: #f99e1a;
+    font-size: x-large;
+    flex-direction: column;
+}
+
+.friendList__single {
+    color: darkgray;
+    font-style: italic;
+    font-size: large;
+}

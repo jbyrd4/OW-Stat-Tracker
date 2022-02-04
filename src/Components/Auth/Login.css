@@ -18,6 +18,7 @@ fieldset {
 
 .form--login > fieldset > input[type="email"] {
   width: 25em;
+  
 }
 
 .label--login {
@@ -52,9 +53,11 @@ fieldset {
   z-index: 1;
   min-height: 25rem;
   min-width: 45rem;
-  background-color: hsla(0, 0%, 100%, 0.4);
+  background: rgba(67, 72, 76, 0.8);
   background-blend-mode: overlay;
   background-repeat: no-repeat;
+  padding: 2em;
+  margin-top: 2em;
 }
 
 .button--close {
@@ -65,4 +68,14 @@ fieldset {
 .dialog {
   min-width: 15rem;
   min-height: 5rem;
+}
+
+.loginEmail {
+  color: #f99e1a;
+  font-size: large;
+}
+
+.loginTitle {
+  color: #f99e1a;
+  font-size: x-large;
 }

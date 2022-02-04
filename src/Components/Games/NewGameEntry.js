@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import "../Friends/Friends.css"
 
 export const NewGameEntry = () => {
   const [maps, setMaps] = useState([]);
@@ -79,14 +80,18 @@ export const NewGameEntry = () => {
   };
 
   return (
-    <form className="newGameForm">
-      <h2>New Game Entry</h2>
+      <div className="friendForm">
+      <h2 className="sectionTitle">New Game Entry</h2>
+    <form className="friendForm__form">
 
-      <div>Friends in Game: {friendNames.join(", ")}</div>
+      <div className="friendList">
+        <section >Friends in Game:</section>
+        <section className="friendList__single">{friendNames.join(", ")}</section>
+        </div>
       <fieldset>
-        <div className="form-group">
-          <label htmlFor="friends">Add a Friend: </label>
-          <select
+        <div className="field">
+          <label htmlFor="friends" className="label">Add a Friend: </label>
+          <select className="field__single"
             value={0}
             onChange={(changeEvent) => {
               const copy = [...friendArr];
@@ -110,9 +115,9 @@ export const NewGameEntry = () => {
         </div>
       </fieldset>
       <fieldset>
-        <div className="form-group">
-          <label htmlFor="maps">Select a Map: </label>
-          <select
+        <div className="field">
+          <label htmlFor="maps" className="label">Select a Map: </label>
+          <select className="field__single"
             value={game.mapId}
             onChange={(changeEvent) => {
               const copy = { ...game };
@@ -128,9 +133,9 @@ export const NewGameEntry = () => {
         </div>
       </fieldset>
       <fieldset>
-        <div className="form-group">
-          <label htmlFor="result">Choose Game Result: </label>
-          <select
+        <div className="field">
+          <label htmlFor="result" className="label">Choose Game Result: </label>
+          <select className="field__single"
             value={game.result ? 1 : 0}
             onChange={(changeEvent) => {
               const copy = { ...game };
@@ -144,8 +149,9 @@ export const NewGameEntry = () => {
           </select>
         </div>
       </fieldset>
-      <button onClick={submitGame}>Submit</button>
-      <button
+    </form>
+      <button className="button" onClick={submitGame}>Submit</button>
+      <button className="button"
         onClick={(event) => {
           event.preventDefault();
           addGame({
@@ -159,6 +165,6 @@ export const NewGameEntry = () => {
       >
         Clear Form
       </button>
-    </form>
+    </div>
   );
 };

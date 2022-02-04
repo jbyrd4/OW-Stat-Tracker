@@ -18,8 +18,8 @@ export const MyGames = () => {
 
   return (
     <>
-      <h2>My Games</h2>
-      <ul>
+      <h2 className="sectionTitle">My Games</h2>
+      <ul className="gameCard">
         {games
           .map((game) => (
             <Game key={`game--${game.id}`} game={game} getGames={getGames} />
