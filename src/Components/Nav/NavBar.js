@@ -7,6 +7,11 @@ export const NavBar = () => {
     <ul className="navbar">
       <li className="navbar__item active">
         <Link className="navbar__link" to="/">
+          Snapshot
+        </Link>
+      </li>
+      <li className="navbar__item active">
+        <Link className="navbar__link" to="/NewGameEntry">
           New Game Entry
         </Link>
       </li>
