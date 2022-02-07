@@ -49,8 +49,8 @@ export const NewGameEntry = () => {
     const newGame = {
       result: game.result,
       userId: parseInt(localStorage.getItem("ow_account")),
-      mapId: game.mapId,
-      date: new Date(),
+      mapId: parseInt(game.mapId),
+      date: Date.now(),
     };
 
     fetch("http://localhost:8088/games", {

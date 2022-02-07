@@ -60,96 +60,114 @@ export const EditFriend = () => {
   ];
 
   return (
-    <form>
-      <h2>Add A New Friend</h2>
-      <fieldset>
-        <div>
-          <label htmlFor="name">Account Name: </label>
-          <input
-            value={friend.name}
-            required
-            autoFocus
-            type="text"
-            placeholder="Enter Account Name"
-            onChange={(changeEvent) => {
-              const copy = { ...friend };
-              copy.name = changeEvent.target.value;
-              addFriend(copy);
-            }}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div>
-          <label htmlFor="tankRank">Tank Rank: </label>
-          <select
-            value={friend.tankRank}
-            onChange={(changeEvent) => {
-              const copy = { ...friend };
-              copy.tankRank = changeEvent.target.value;
-              addFriend(copy);
-            }}
-          >
-            {ranks.map((rank) => (
-              <option key={`key--${rank}`} value={rank} label={rank}></option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div>
-          <label htmlFor="dpsRank">DPS Rank: </label>
-          <select
-            value={friend.dpsRank}
-            onChange={(changeEvent) => {
-              const copy = { ...friend };
-              copy.dpsRank = changeEvent.target.value;
-              addFriend(copy);
-            }}
-          >
-            {ranks.map((rank) => (
-              <option key={`key--${rank}`} value={rank} label={rank}></option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div>
-          <label htmlFor="supRank">Support Rank: </label>
-          <select
-            value={friend.supRank}
-            onChange={(changeEvent) => {
-              const copy = { ...friend };
-              copy.supRank = changeEvent.target.value;
-              addFriend(copy);
-            }}
-          >
-            {ranks.map((rank) => (
-              <option key={`key--${rank}`} value={rank} label={rank}></option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div>
-          <label htmlFor="notes">Notes: </label>
-          <textarea
-            value={friend.notes}
-            onChange={(changeEvent) => {
-              const copy = { ...friend };
-              copy.notes = changeEvent.target.value;
-              addFriend(copy);
-            }}
-          ></textarea>
-        </div>
-      </fieldset>
-      <button
-        onClick={(event) => {
-          editFriend(event);
-        }}
-      >
-        Save
-      </button>
-    </form>
+    <div className="friendForm">
+      <h2 className="sectionTitle">Edit Friend</h2>
+      <form className="friendForm__form">
+        <fieldset>
+          <div className="field">
+            <label htmlFor="name" className="label">
+              Account Name:{" "}
+            </label>
+            <input
+              className="field__single"
+              value={friend.name}
+              required
+              autoFocus
+              type="text"
+              placeholder="Enter Account Name"
+              onChange={(changeEvent) => {
+                const copy = { ...friend };
+                copy.name = changeEvent.target.value;
+                addFriend(copy);
+              }}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="field">
+            <label htmlFor="tankRank" className="label">
+              Tank Rank:{" "}
+            </label>
+            <select
+              className="field__single"
+              value={friend.tankRank}
+              onChange={(changeEvent) => {
+                const copy = { ...friend };
+                copy.tankRank = changeEvent.target.value;
+                addFriend(copy);
+              }}
+            >
+              {ranks.map((rank) => (
+                <option key={`key--${rank}`} value={rank} label={rank}></option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="field">
+            <label htmlFor="dpsRank" className="label">
+              DPS Rank:{" "}
+            </label>
+            <select
+              className="field__single"
+              value={friend.dpsRank}
+              onChange={(changeEvent) => {
+                const copy = { ...friend };
+                copy.dpsRank = changeEvent.target.value;
+                addFriend(copy);
+              }}
+            >
+              {ranks.map((rank) => (
+                <option key={`key--${rank}`} value={rank} label={rank}></option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="field">
+            <label htmlFor="supRank" className="label">
+              Support Rank:{" "}
+            </label>
+            <select
+              className="field__single"
+              value={friend.supRank}
+              onChange={(changeEvent) => {
+                const copy = { ...friend };
+                copy.supRank = changeEvent.target.value;
+                addFriend(copy);
+              }}
+            >
+              {ranks.map((rank) => (
+                <option key={`key--${rank}`} value={rank} label={rank}></option>
+              ))}
+            </select>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="field">
+            <label htmlFor="notes" className="label">
+              Notes:{" "}
+            </label>
+            <textarea
+              className="field__single"
+              value={friend.notes}
+              onChange={(changeEvent) => {
+                const copy = { ...friend };
+                copy.notes = changeEvent.target.value;
+                addFriend(copy);
+              }}
+            ></textarea>
+          </div>
+        </fieldset>
+        <button
+          className="button"
+          onClick={(event) => {
+            editFriend(event);
+          }}
+        >
+          Save
+        </button>
+      </form>
+    </div>
   );
 };

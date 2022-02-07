@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./Games.css"
-import "../Friends/Friends.css"
+import { useLocation } from "react-router-dom";
+import "./Games.css";
+import "../Friends/Friends.css";
 
 export const Game = ({ game, getGames }) => {
   const [friendGames, setFriendGames] = useState([]);
+
+  const location = useLocation();
 
   useEffect(() => {
     fetch("http://localhost:8088/friendGames?_expand=game&_expand=friend")
@@ -20,35 +23,42 @@ export const Game = ({ game, getGames }) => {
   };
 
   const friendsInGames = (friendGamesArr) => {
-    const friendNames = friendGamesArr.map((friend) => friend.friend.name)
-    const friendArr = friendNames.join(" ")
-    return <div className="cardInput__friend" key="friendString">{friendArr}</div>
-  }
+    const friendNames = friendGamesArr.map((friend) => friend.friend.name);
+    const friendArr = friendNames.join(" ");
+    return (
+      <div className="cardInput__friend" key="friendString">
+        {friendArr}
+      </div>
+    );
+  };
 
   return (
     <li className="gameCard__single">
       <section className="gameInfo">
-      <div className="cardCategory__game">Friends Played: </div>
-      <section className="gameFriendList">
-      {friendsInGames(friendGames)}
-      </section>
+        <div className="cardCategory__game">Friends Played: </div>
+        <section className="gameFriendList">
+          {friendsInGames(friendGames)}
+        </section>
       </section>
       <div>
         <p className="cardCategory">Map: </p>
         <p className="cardInput">{game.map?.name}</p>
       </div>
       <div>
-      <p className="cardCategory">Result: </p>
+        <p className="cardCategory">Result: </p>
         <p className="cardInput">{game.result ? "Win" : "Loss"}</p>
       </div>
-      <button className="button"
-        key={game.id}
-        onClick={() => {
-          deleteGame(game.id);
-        }}
-      >
-        Delete
-      </button>
+      {location.pathname === "/mygames" && (
+        <button
+          className="button"
+          key={game.id}
+          onClick={() => {
+            deleteGame(game.id);
+          }}
+        >
+          Delete
+        </button>
+      )}
     </li>
   );
 };

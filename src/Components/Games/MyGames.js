@@ -16,16 +16,17 @@ export const MyGames = () => {
 
   useEffect(getGames, []);
 
+  const sortedGames = games.sort((a, b) => b.date - a.date)
+
   return (
     <>
       <h2 className="sectionTitle">My Games</h2>
       <ul className="gameCard">
-        {games
+        {sortedGames
           .map((game) => (
             <Game key={`game--${game.id}`} game={game} getGames={getGames} />
           ))
-          .sort((a, b) => a.date - b.date)
-          .reverse()}
+          }
       </ul>
     </>
   );

@@ -7,14 +7,10 @@
 }
 
 .gameInfo {
-    display: flex;
-    flex-direction: column;
-    font-size: large;
-    flex-wrap: wrap;
-}
-
-.gameCard {
-  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+  flex-wrap: wrap;
 }
 
 .gameCard__single {
@@ -22,7 +18,7 @@
   padding: 1em;
   margin: 0.5em;
   background: rgba(67, 72, 76, 0.8);
-  justify-content:space-between;
+  justify-content: space-between;
   padding-left: 5em;
   padding-right: 5em;
   clip-path: polygon(0 0, 96% 0, 100% 100%, 4% 100%);
@@ -32,16 +28,16 @@
 }
 
 .cardInput__friend {
-    color: darkgray;
-    font-style: italic;
-    width: 250px;
+  color: darkgray;
+  font-style: italic;
+  width: 250px;
 }
 
 .cardCategory__game {
-        color: #f99e1a;
+  color: #f99e1a;
 }
 
 .gameFriendList {
-    display: flex;
-    flex-direction: wrap;
+  display: flex;
+  flex-direction: wrap;
 }
