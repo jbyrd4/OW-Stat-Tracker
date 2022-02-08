@@ -33,7 +33,7 @@ export const Game = ({ game, getGames }) => {
   };
 
   return (
-    <li className="gameCard__single">
+    <li className="gameCard__single slide">
       <section className="gameInfo">
         <div className="cardCategory__game">Friends Played: </div>
         <section className="gameFriendList">

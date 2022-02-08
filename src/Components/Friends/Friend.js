@@ -29,7 +29,7 @@ export const Friend = ({ friend, deleteFriend }) => {
   };
 
   return (
-    <li className="card__single">
+    <li className="card__single slide">
       <div className="accountName">{friend.name}</div>
       <div><p className="cardCategory">Tank: </p><p className="cardInput">{friend.tankRank}</p></div>
       <div><p className="cardCategory">DPS: </p><p className="cardInput">{friend.dpsRank}</p></div>

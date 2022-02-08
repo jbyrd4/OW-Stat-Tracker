@@ -117,7 +117,7 @@ export const Snapshot = () => {
           <p className="sectionTitle">Top Friends</p>
           {finalFriendWinRates.map((friend) => {
             return (
-              <div className="snapshot__single">
+              <div className="snapshot__single slide">
                 <p className="snapshotCategory">Name: <p className="snapshotInput">
                     {friend.name}</p></p>
                 <p></p>

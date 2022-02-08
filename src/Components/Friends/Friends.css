@@ -35,6 +35,8 @@
 
 .label {
   padding-bottom: 0.5em;
+  color: darkgray;
+  font-style: italic;
 }
 
 .field__single {
@@ -50,51 +52,102 @@
 
 .card__single {
   padding: 1em;
-  margin: .5em;
+  margin: 0.5em;
   background: rgba(67, 72, 76, 0.8);
   flex-basis: 25%;
 }
 
 .cardCategory {
-    display: inline;
-    color: #f99e1a;
-    font-size: large;
+  display: inline;
+  color: #f99e1a;
+  font-size: large;
 }
 
 .cardInput {
-    display: inline;
-    color: darkgray;
-    font-style: italic;
+  display: inline;
+  color: darkgray;
+  font-style: italic;
 }
 
 .winRate {
-    text-align: center;
-    padding: 1em;
-    font-size: larger;
+  text-align: center;
+  padding: 1em;
+  font-size: larger;
 }
 
 .accountName {
-    text-align: center;
-    padding: .5em;
-    font-size: x-large;
-    color: #f99e1a;
+  text-align: center;
+  padding: 0.5em;
+  font-size: x-large;
+  color: #f99e1a;
 }
 
 .friendButtons {
-    display: flex;
+  display: flex;
 }
 
 .friendList {
-    display: flex;
-    flex-wrap: wrap;
-    width: 25%;
-    color: #f99e1a;
-    font-size: x-large;
-    flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  width: 25%;
+  color: #f99e1a;
+  font-size: x-large;
+  flex-direction: column;
 }
 
 .friendList__single {
-    color: darkgray;
-    font-style: italic;
-    font-size: large;
+  color: darkgray;
+  font-style: italic;
+  font-size: large;
+}
+
+.collapsible {
+  text-align: center;
+}
+
+.slide {
+  animation-duration: .5s;
+  animation-name: slide;
+}
+
+@keyframes slide {
+  from {
+    margin-top: 100%;
+  }
+
+  to {
+    margin-top: 0%;
+  }
+}
+
+.expandForm {
+  animation-duration: 0.5s;
+  animation-name: expand;
+  animation-timing-function: ease-in;
+}
+
+@keyframes expand {
+  from {
+    max-height: 0px;
+  }
+  
+  to {
+    max-height: 500px;
+  }
+}
+
+.expandSmall {
+  animation-duration: 0.25s;
+  animation-name: expandSmall;
+  animation-timing-function: linear;
+}
+
+@keyframes expandSmall {
+  from {
+    max-height: 0px;
+  }
+  
+  to {
+    max-height: 50px;
+  }
 }
