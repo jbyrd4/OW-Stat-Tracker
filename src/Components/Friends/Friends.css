@@ -16,6 +16,7 @@
   clip-path: polygon(0 0, 98.5% 0, 100% 100%, 1.5% 100%);
   margin-left: 2em;
   margin-right: 2em;
+  border: 2px solid #43484c;
 }
 
 .button {
@@ -121,9 +122,9 @@
 }
 
 .expandForm {
-  animation-duration: 0.5s;
+  animation-duration: 0.4s;
   animation-name: expand;
-  animation-timing-function: ease-in;
+  animation-timing-function: linear;
 }
 
 @keyframes expand {
@@ -137,7 +138,7 @@
 }
 
 .expandSmall {
-  animation-duration: 0.25s;
+  animation-duration: 0.1s;
   animation-name: expandSmall;
   animation-timing-function: linear;
 }
