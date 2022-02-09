@@ -1,3 +1,23 @@
+Purpose/Features: This app is designed to be able to track the winrates of added friends in the game
+            Overwatch. You can add friends, game records and delete the same. You can also
+            edit friend records. On the friend list page you can see individual friend win
+            rates. On the snapshot page you an see a summary of the logged in users highest winrate friends and most won maps along with most recently played games. 
+
+Audience: Anyone who plays overwatch and wants to track win rates
+
+Getting Started: Begin by creating an account and logging in. Navigate to My Friends page and
+            create friends to add to the games you are playing. You can then go back to the New
+            Game Entry page and begin adding game records. The snapshot page will show a summary
+            of your account.
+
+ERD: https://dbdiagram.io/d/61e085394bca010ae987933a
+WireFrame: https://miro.com/app/board/uXjVOUF44Iw=/
+
+Created by Jury Byrd
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

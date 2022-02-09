@@ -97,7 +97,7 @@ export const Snapshot = () => {
     const mapGames = games.filter((game) => game.mapId === map.id);
     const wonGames = mapGames.filter((game) => game.result === true);
     const winRate =
-      wonGames.length > 0 ? (wonGames.length / mapGames.length) * 100 : 0;
+      wonGames.length > 0 ? ((wonGames.length / mapGames.length).toFixed(2)) * 100 : 0;
     const mapObj = {
       winRate: winRate,
       name: map.name,
@@ -107,7 +107,6 @@ export const Snapshot = () => {
 
   const sortedMaps = mapWinRates.sort((a, b) => b.winRate - a.winRate);
   const splicedMaps = sortedMaps.splice(0, 5);
-  console.log(splicedMaps);
 
   return (
     <>
@@ -117,13 +116,18 @@ export const Snapshot = () => {
           <p className="sectionTitle">Top Friends</p>
           {finalFriendWinRates.map((friend) => {
             return (
-              <div className="snapshot__single slide">
-                <p className="snapshotCategory">Name: <p className="snapshotInput">
-                    {friend.name}</p></p>
+              <div
+                key={`snapshot--${friend.name}`}
+                className="snapshot__single slide"
+              >
+                <span className="snapshotCategory">
+                  Name: <p className="snapshotInput">{friend.name}</p>
+                </span>
                 <p></p>
-                <p className="snapshotCategory">Winrate: <p className="snapshotInput">
-                    {friend.friendWinRate}%</p></p>
-                
+                <span className="snapshotCategory">
+                  Winrate:{" "}
+                  <p className="snapshotInput">{friend.friendWinRate}%</p>
+                </span>
               </div>
             );
           })}
@@ -138,17 +142,17 @@ export const Snapshot = () => {
       <section>
         <p className="sectionTitle">Best Maps</p>
         <div className="snapshot__map">
-        {splicedMaps.map((map) => {
-          return (
-            <div className="mapBorder">
-              <p className="snapshotCategory">Map: </p>
-              <p className="snapshotInput">{map.name}</p>
-              <p></p>
-              <p className="snapshotCategory">Winrate: </p>
-              <p className="snapshotInput">{map.winRate}%</p>
-            </div>
-          );
-        })}
+          {splicedMaps.map((map) => {
+            return (
+              <div key={`map--${map.name}`} className="mapBorder">
+                <p className="snapshotCategory">Map: </p>
+                <p className="snapshotInput">{map.name}</p>
+                <p></p>
+                <p className="snapshotCategory">Winrate: </p>
+                <p className="snapshotInput">{map.winRate}%</p>
+              </div>
+            );
+          })}
         </div>
       </section>
     </>
