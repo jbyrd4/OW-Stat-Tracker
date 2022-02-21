@@ -11,6 +11,7 @@ Getting Started: Begin by creating an account and logging in. Navigate to My Fri
             of your account.
 
 ERD: https://dbdiagram.io/d/61e085394bca010ae987933a
+
 WireFrame: https://miro.com/app/board/uXjVOUF44Iw=/
 
 Created by Jury Byrd
